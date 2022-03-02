@@ -41,26 +41,21 @@ public class Main {
         System.out.println("Your text to be encrypted is: " + originalText);
         System.out.println("Type shift value for the encryption");
         int userInputShift = keyboard.nextInt();
-        convertTextToArray(originalText);
         showCaesarEncryptionPostMenu();
     }
 
-    //Make original text to array
-    public void convertTextToArray(String originalText){
-        originalText = originalText.toUpperCase();
-        char[] charachterArray = originalText.toCharArray();
-        System.out.println(charachterArray);
-        for (int i = 0; i < charachterArray.length; i++){
-            int numberArray = convertLetterToNumber(charachterArray[i]);
-            System.out.println(numberArray);
-        }
+    //Make string to array
+    public char[] convertStringToCharArray(String originalText){
+        char[] array = originalText.toCharArray();
+        return array;
     }
 
-    public int convertLetterToNumber(char letter){
+    //Converting a letter (char) to number
+    public char convertLetterToNumber(char letter){
         char[] alphabet = {' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
             'W','X','Y','Z','Æ','Ø','Å'};
-        int number = 0;
-        for (int i = 0; i < alphabet.length; i++){
+        char number = 0;
+        for (char i = 0; i < alphabet.length; i++){
             if (alphabet[i] == letter){
                 number = i;
             }
