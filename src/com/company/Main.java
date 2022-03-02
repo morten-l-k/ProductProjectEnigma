@@ -37,11 +37,22 @@ public class Main {
         System.out.println("Welcome to the caesar encryption menu");
         System.out.println("Type text to be encrypted");
         Scanner keyboard = new Scanner(System.in);
-        String userInputText = keyboard.next();
-        System.out.println("Your text to be encrypted is: " + userInputText);
+        String originalText = keyboard.nextLine();
+        System.out.println("Your text to be encrypted is: " + originalText);
         System.out.println("Type shift value for the encryption");
         int userInputShift = keyboard.nextInt();
+        convertTextToArray(originalText);
         showCaesarEncryptionPostMenu();
+    }
+
+    //Make original text to array
+    public void convertTextToArray(String originalText){
+        originalText = originalText.toUpperCase();
+        char[] charachterArray = originalText.toCharArray();
+        System.out.println(charachterArray);
+        for (int i = 0; i < charachterArray.length; i++){
+            System.out.println("XXX");
+        }
     }
 
     //Show caesar encryption post menu
@@ -91,5 +102,6 @@ public class Main {
 
     public static void main(String[] args) {
         Main obj = new Main();
+        obj.showCaesarEncryptionMenu();
     }
 }
