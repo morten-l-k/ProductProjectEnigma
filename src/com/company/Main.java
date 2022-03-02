@@ -42,6 +42,7 @@ public class Main {
         char[] originalTextArray = convertStringToCharArray(originalText.toUpperCase());
         System.out.println("Type shift value for the encryption");
         int userInputShift = keyboard.nextInt();
+        System.out.println(encryptArray(originalTextArray,userInputShift));
         showCaesarEncryptionPostMenu();
     }
 
@@ -131,6 +132,8 @@ public class Main {
 
     public static void main(String[] args) {
         Main obj = new Main();
+
+        //Foreløbig virker encryption af Caesar code kun
         obj.showCaesarEncryptionMenu();
     }
 }
