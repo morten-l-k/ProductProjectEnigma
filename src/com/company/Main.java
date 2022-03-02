@@ -51,8 +51,21 @@ public class Main {
         char[] charachterArray = originalText.toCharArray();
         System.out.println(charachterArray);
         for (int i = 0; i < charachterArray.length; i++){
-            System.out.println("XXX");
+            int numberArray = convertLetterToNumber(charachterArray[i]);
+            System.out.println(numberArray);
         }
+    }
+
+    public int convertLetterToNumber(char letter){
+        char[] alphabet = {' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
+            'W','X','Y','Z','Æ','Ø','Å'};
+        int number = 0;
+        for (int i = 0; i < alphabet.length; i++){
+            if (alphabet[i] == letter){
+                number = i;
+            }
+        }
+        return number;
     }
 
     //Show caesar encryption post menu
