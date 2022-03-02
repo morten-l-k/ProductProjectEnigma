@@ -45,12 +45,23 @@ public class Main {
         showCaesarEncryptionPostMenu();
     }
 
+    //Encrypt array
+    public char[] encryptArray(char[] arrayText, int shiftValue){
+        char[] encryptedText = new char[arrayText.length];
+        for (int i = 0; i < arrayText.length; i++){
+            int number = convertLetterToNumber(arrayText[i]) + shiftValue;
+            char letter = convertNumberToLetter(number);
+            encryptedText[i] = letter;
+        }
+        System.out.println(encryptedText);
+        return encryptedText;
+    }
+
     //Make string to array
     public char[] convertStringToCharArray(String originalText){
         char[] array = originalText.toCharArray();
         return array;
     }
-
 
     //Convert a letter (char) to number
     public char convertLetterToNumber(char letter){
