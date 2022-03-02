@@ -39,6 +39,7 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         String originalText = keyboard.nextLine();
         System.out.println("Your text to be encrypted is: " + originalText);
+        char[] originalTextArray = convertStringToCharArray(originalText.toUpperCase());
         System.out.println("Type shift value for the encryption");
         int userInputShift = keyboard.nextInt();
         showCaesarEncryptionPostMenu();
@@ -50,7 +51,8 @@ public class Main {
         return array;
     }
 
-    //Converting a letter (char) to number
+
+    //Convert a letter (char) to number
     public char convertLetterToNumber(char letter){
         char[] alphabet = {' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
             'W','X','Y','Z','Æ','Ø','Å'};
@@ -61,6 +63,14 @@ public class Main {
             }
         }
         return number;
+    }
+
+    //Convert number to letter (char)
+    public char convertNumberToLetter(int number){
+        char[] alphabet = {' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
+            'W','X','Y','Z','Æ','Ø','Å'};
+        char letter = alphabet[number];
+        return letter;
     }
 
     //Show caesar encryption post menu
