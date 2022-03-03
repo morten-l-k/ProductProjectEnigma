@@ -6,14 +6,14 @@ public class Main {
     //Main menu
     public void showMainMenu(){
         System.out.println("Welcome to the Enigma prototype");
-        System.out.println("Press 1 to choose the caesar cipher machine, press 2 for the Vigenère, press 3 for" +
+        System.out.println("Press 1 to choose the Caesar cipher machine, press 2 for the Vigenère, press 3 for" +
             "the number cipher and 4 to exit");
         Scanner keyboard = new Scanner(System.in);
         int userInput = keyboard.nextInt();
         if (userInput == 1){
             showCaesarMenu();
         } else {
-            System.out.println("Still working to implement other ciphers");
+            System.out.println("Still working to implement other code breakers");
         }
     }
 
@@ -56,6 +56,8 @@ public class Main {
             showCaesarEncryptionMenu();
         } else if (userInput == 2){
             showCaesarDecryptionMenu();
+        } else if (userInput == 3){
+            showMainMenu();
         } else {
             showMainMenu();
         }
@@ -85,6 +87,8 @@ public class Main {
             showCaesarDecryptionMenu();
         } else if (userInput == 2){
             showCaesarEncryptionMenu();
+        } else if (userInput == 3){
+            showMainMenu();
         } else{
             showMainMenu();
         }
@@ -116,10 +120,9 @@ public class Main {
     }
 
     //Convert string to array
-    public char[] convertStringToCharArray(String originalText){
-        originalText = originalText.toUpperCase();
-        char[] array = originalText.toCharArray();
-        return array;
+    public char[] convertStringToCharArray(String text){
+        text = text.toUpperCase();
+        return text.toCharArray();
     }
 
     //Convert a letter (char) to number
@@ -139,14 +142,13 @@ public class Main {
     public char convertNumberToLetter(int number){
         char[] alphabet = {' ','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V',
             'W','X','Y','Z','Æ','Ø','Å'};
-        char letter = alphabet[number];
-        return letter;
+        return alphabet[number];
     }
 
     public static void main(String[] args) {
         Main obj = new Main();
 
-        //Foreløbig virker encryption af Caesar code kun
-        obj.showCaesarEncryptionMenu();
+        //Foreløbigt virker Caesar code breaker kun
+        obj.showMainMenu();
     }
 }
