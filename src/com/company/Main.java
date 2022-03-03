@@ -111,6 +111,18 @@ public class Main {
         showCaesarDecryptionPostMenu();
     }
 
+    public char[] decryptArray(char[] codeText, int shiftValue){
+        char[] decryptedText = new char[codeText.length];
+        for (int i = 0 ; i < codeText.length; i++){
+            int number = convertLetterToNumber(codeText[i])-shiftValue;
+            System.out.println(number);
+            char letter = convertNumberToLetter(number);
+            decryptedText[i] = letter;
+        }
+        System.out.println(decryptedText);
+        return decryptedText;
+    }
+
     //Show caesar decryption post menu
     public void showCaesarDecryptionPostMenu(){
         System.out.println("Would you like to decrypt a new text (press 1), encrypt a text (press 2), " +
