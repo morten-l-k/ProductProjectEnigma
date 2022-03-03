@@ -17,7 +17,7 @@ public class Main {
         }
     }
 
-    //Show Caesar encryption main menu
+    //Show Caesar main menu
     public void showCaesarMenu(){
         System.out.println("Welcome to the Caesar cipher prototype");
         System.out.println("Press 1 to encrypt a text or 2 to decrypt a text");
@@ -46,6 +46,52 @@ public class Main {
         showCaesarEncryptionPostMenu();
     }
 
+    //Show caesar encryption post menu
+    public void showCaesarEncryptionPostMenu(){
+        System.out.println("Would you like to encrypt a new text (press 1), decrypt a text (press 2), " +
+            "or back to main menu (press 3)");
+        Scanner keyboard = new Scanner(System.in);
+        int userInput = keyboard.nextInt();
+        if (userInput == 1){
+            showCaesarEncryptionMenu();
+        } else if (userInput == 2){
+            showCaesarDecryptionMenu();
+        } else {
+            showMainMenu();
+        }
+    }
+
+    //Show caesar decryption menu
+    public void showCaesarDecryptionMenu(){
+        System.out.println("Welcome to the caesar decryption menu");
+        System.out.println("Type code text to be decrypted");
+        Scanner keyboard = new Scanner(System.in);
+        String encryptedMessage = keyboard.next();
+        System.out.println("Your text to be decrypted is: " + encryptedMessage);
+        char[] encryptedMessageArray = convertStringToCharArray(encryptedMessage);
+        System.out.println("Type shift value for the decryption");
+        int userInputShift = keyboard.nextInt();
+        System.out.println(decryptArray(encryptedMessageArray,userInputShift));
+        showCaesarDecryptionPostMenu();
+    }
+
+    //Show caesar decryption post menu
+    public void showCaesarDecryptionPostMenu(){
+        System.out.println("Would you like to decrypt a new text (press 1), encrypt a text (press 2), " +
+            "or back to main menu (press 3");
+        Scanner keyboard = new Scanner(System.in);
+        int userInput = keyboard.nextInt();
+        if (userInput == 1){
+            showCaesarDecryptionMenu();
+        } else if (userInput == 2){
+            showCaesarEncryptionMenu();
+        } else{
+            showMainMenu();
+        }
+
+
+    }
+
     //Encrypt array
     public char[] encryptArray(char[] originalText, int shiftValue){
         char[] encryptedText = new char[originalText.length];
@@ -57,7 +103,19 @@ public class Main {
         return encryptedText;
     }
 
-    //Make string to array
+    //Decrypt array
+    public char[] decryptArray(char[] codeText, int shiftValue){
+        char[] decryptedText = new char[codeText.length];
+        for (int i = 0 ; i < codeText.length; i++){
+            int number = convertLetterToNumber(codeText[i])-shiftValue;
+            System.out.println(number);
+            char letter = convertNumberToLetter(number);
+            decryptedText[i] = letter;
+        }
+        return decryptedText;
+    }
+
+    //Convert string to array
     public char[] convertStringToCharArray(String originalText){
         originalText = originalText.toUpperCase();
         char[] array = originalText.toCharArray();
@@ -84,65 +142,6 @@ public class Main {
         char letter = alphabet[number];
         return letter;
     }
-
-    //Show caesar encryption post menu
-    public void showCaesarEncryptionPostMenu(){
-        System.out.println("Would you like to encrypt a new text (press 1), decrypt a text (press 2), " +
-            "or back to main menu (press 3)");
-        Scanner keyboard = new Scanner(System.in);
-        int userInput = keyboard.nextInt();
-        if (userInput == 1){
-            showCaesarEncryptionMenu();
-        } else if (userInput == 2){
-            showCaesarDecryptionMenu();
-        } else {
-            showMainMenu();
-        }
-    }
-
-    //Show caesar decryption menu
-    public void showCaesarDecryptionMenu(){
-        System.out.println("Welcome to the caesar decryption menu");
-        System.out.println("Type code text to be decrypted");
-        Scanner keyboard = new Scanner(System.in);
-        String encryptedMessage = keyboard.next();
-        System.out.println("Your text to be decrypted is: " + encryptedMessage);
-        char[] encryptedMessageArray = convertStringToCharArray(encryptedMessage.toUpperCase());
-        System.out.println("Type shift value for the decryption");
-        int userInputShift = keyboard.nextInt();
-        System.out.println(decryptArray(encryptedMessageArray,userInputShift));
-        showCaesarDecryptionPostMenu();
-    }
-
-    public char[] decryptArray(char[] codeText, int shiftValue){
-        char[] decryptedText = new char[codeText.length];
-        for (int i = 0 ; i < codeText.length; i++){
-            int number = convertLetterToNumber(codeText[i])-shiftValue;
-            System.out.println(number);
-            char letter = convertNumberToLetter(number);
-            decryptedText[i] = letter;
-        }
-        System.out.println(decryptedText);
-        return decryptedText;
-    }
-
-    //Show caesar decryption post menu
-    public void showCaesarDecryptionPostMenu(){
-        System.out.println("Would you like to decrypt a new text (press 1), encrypt a text (press 2), " +
-            "or back to main menu (press 3");
-        Scanner keyboard = new Scanner(System.in);
-        int userInput = keyboard.nextInt();
-        if (userInput == 1){
-            showCaesarDecryptionMenu();
-        } else if (userInput == 2){
-            showCaesarEncryptionMenu();
-        } else{
-            showMainMenu();
-        }
-
-
-    }
-
 
     public static void main(String[] args) {
         Main obj = new Main();
