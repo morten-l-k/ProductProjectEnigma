@@ -101,7 +101,7 @@ public class Main {
         char[] encryptedText = new char[originalText.length];
         for (int i = 0; i < originalText.length; i++){
             int number = convertLetterToNumber(originalText[i]);
-            int shiftedNumber = shiftValue(number, shiftValue);
+            int shiftedNumber = shiftValueAbove(number, shiftValue);
             char letter = convertNumberToLetter(shiftedNumber);
             encryptedText[i] = letter;
         }
@@ -109,7 +109,7 @@ public class Main {
     }
 
     //Decrypt array
-   public char[] decryptArray(char[] codeText, int shiftValue){
+    public char[] decryptArray(char[] codeText, int shiftValue){
         char[] decryptedText = new char[codeText.length];
         for (int i = 0 ; i < codeText.length; i++){
             int number = convertLetterToNumber(codeText[i])-shiftValue;
@@ -146,11 +146,23 @@ public class Main {
         return alphabet[number];
     }
 
-    public int shiftValue(int number, int shiftValue){
+    //Corrects if shift value gets above outer bounds of alphabet
+    public int shiftValueAbove(int number, int shiftValue){
         for (int i = 0; i < shiftValue; i++){
             number++;
             if (number > 29){
                 number = 1;
+            }
+        }
+        return number;
+    }
+
+    //Corrects if shift value gets below lower bounds of alphabet
+    public int shiftValueBelow(int number, int shiftValue){
+        for (int i = 0; i < shiftValue; i++){
+            number--;
+            if (number < 1){
+                number = 29;
             }
         }
         return number;
