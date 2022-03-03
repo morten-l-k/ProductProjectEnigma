@@ -179,6 +179,5 @@ public class Main {
 
         //Foreløbigt virker Caesar code breaker kun
         obj.showMainMenu();
-
     }
 }
