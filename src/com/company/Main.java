@@ -47,14 +47,13 @@ public class Main {
     }
 
     //Encrypt array
-    public char[] encryptArray(char[] arrayText, int shiftValue){
-        char[] encryptedText = new char[arrayText.length];
-        for (int i = 0; i < arrayText.length; i++){
-            int number = convertLetterToNumber(arrayText[i]) + shiftValue;
+    public char[] encryptArray(char[] originalText, int shiftValue){
+        char[] encryptedText = new char[originalText.length];
+        for (int i = 0; i < originalText.length; i++){
+            int number = convertLetterToNumber(originalText[i]) + shiftValue;
             char letter = convertNumberToLetter(number);
             encryptedText[i] = letter;
         }
-        System.out.println(encryptedText);
         return encryptedText;
     }
 
