@@ -39,7 +39,7 @@ public class Main {
         Scanner keyboard = new Scanner(System.in);
         String originalText = keyboard.nextLine();
         System.out.println("Your text to be encrypted is: " + originalText);
-        char[] originalTextArray = convertStringToCharArray(originalText.toUpperCase());
+        char[] originalTextArray = convertStringToCharArray(originalText);
         System.out.println("Type shift value for the encryption");
         int userInputShift = keyboard.nextInt();
         System.out.println(encryptArray(originalTextArray,userInputShift));
@@ -59,6 +59,7 @@ public class Main {
 
     //Make string to array
     public char[] convertStringToCharArray(String originalText){
+        originalText = originalText.toUpperCase();
         char[] array = originalText.toCharArray();
         return array;
     }
@@ -104,10 +105,12 @@ public class Main {
         System.out.println("Welcome to the caesar decryption menu");
         System.out.println("Type code text to be decrypted");
         Scanner keyboard = new Scanner(System.in);
-        String userInputText = keyboard.next();
-        System.out.println("Your text to be decrypted is: " + userInputText);
+        String encryptedMessage = keyboard.next();
+        System.out.println("Your text to be decrypted is: " + encryptedMessage);
+        char[] encryptedMessageArray = convertStringToCharArray(encryptedMessage.toUpperCase());
         System.out.println("Type shift value for the decryption");
         int userInputShift = keyboard.nextInt();
+        System.out.println(decryptArray(encryptedMessageArray,userInputShift));
         showCaesarDecryptionPostMenu();
     }
 
