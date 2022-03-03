@@ -80,7 +80,7 @@ public class Main {
     //Show caesar decryption post menu
     public void showCaesarDecryptionPostMenu(){
         System.out.println("Would you like to decrypt a new text (press 1), encrypt a text (press 2), " +
-            "or back to main menu (press 3");
+            "or back to main menu (press 3)");
         Scanner keyboard = new Scanner(System.in);
         int userInput = keyboard.nextInt();
         if (userInput == 1){
@@ -100,15 +100,16 @@ public class Main {
     public char[] encryptArray(char[] originalText, int shiftValue){
         char[] encryptedText = new char[originalText.length];
         for (int i = 0; i < originalText.length; i++){
-            int number = convertLetterToNumber(originalText[i]) + shiftValue;
-            char letter = convertNumberToLetter(number);
+            int number = convertLetterToNumber(originalText[i]);
+            int shiftedNumber = shiftValue(number, shiftValue);
+            char letter = convertNumberToLetter(shiftedNumber);
             encryptedText[i] = letter;
         }
         return encryptedText;
     }
 
     //Decrypt array
-    public char[] decryptArray(char[] codeText, int shiftValue){
+   public char[] decryptArray(char[] codeText, int shiftValue){
         char[] decryptedText = new char[codeText.length];
         for (int i = 0 ; i < codeText.length; i++){
             int number = convertLetterToNumber(codeText[i])-shiftValue;
@@ -145,10 +146,21 @@ public class Main {
         return alphabet[number];
     }
 
+    public int shiftValue(int number, int shiftValue){
+        for (int i = 0; i < shiftValue; i++){
+            number++;
+            if (number > 29){
+                number = 1;
+            }
+        }
+        return number;
+    }
+
     public static void main(String[] args) {
         Main obj = new Main();
 
         //Foreløbigt virker Caesar code breaker kun
         obj.showMainMenu();
+
     }
 }
