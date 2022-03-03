@@ -112,9 +112,9 @@ public class Main {
     public char[] decryptArray(char[] codeText, int shiftValue){
         char[] decryptedText = new char[codeText.length];
         for (int i = 0 ; i < codeText.length; i++){
-            int number = convertLetterToNumber(codeText[i])-shiftValue;
-            System.out.println(number);
-            char letter = convertNumberToLetter(number);
+            int number = convertLetterToNumber(codeText[i]);
+            int shiftedNumber = shiftValueBelow(number, shiftValue);
+            char letter = convertNumberToLetter(shiftedNumber);
             decryptedText[i] = letter;
         }
         return decryptedText;
@@ -148,6 +148,9 @@ public class Main {
 
     //Corrects if shift value gets above outer bounds of alphabet
     public int shiftValueAbove(int number, int shiftValue){
+        if (number == 0){
+            return number;
+        }
         for (int i = 0; i < shiftValue; i++){
             number++;
             if (number > 29){
@@ -159,6 +162,9 @@ public class Main {
 
     //Corrects if shift value gets below lower bounds of alphabet
     public int shiftValueBelow(int number, int shiftValue){
+        if (number == 0){
+            return number;
+        }
         for (int i = 0; i < shiftValue; i++){
             number--;
             if (number < 1){
